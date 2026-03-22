@@ -1,0 +1,27 @@
+edition: 3.0.0
+name: fc-app
+access: default  # 对应 Actions 中配置的密钥别名（default）
+
+services:
+  fc-function:
+    component: fc  # 声明是 FC 组件
+    props:
+      region: ${env.ALIYUN_REGION}  # 地域
+      accountId: ${env.ALIYUN_ACCOUNT_ID}  # 主账号 ID（子账号必配）
+      service:
+        name: my-fc-service  # FC 服务名
+      function:
+        name: my-fc-function  # FC 函数名
+        runtime: nodejs20
+        codeUri: ./  # 代码目录
+        handler: index.handler  # 入口函数
+      triggers:
+        - name: http-trigger
+          type: http
+          config:
+            authType: anonymous
+            methods: [GET, POST]
+      # 可选：输出触发器地址（用于部署验证）
+      outputs:
+        - name: fc_url
+          value: ${fc-function.triggers[0].url}
