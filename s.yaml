@@ -1,25 +1,27 @@
 edition: 3.0.0
 name: fc-app
-access: default  # 对应 Actions 中配置的密钥别名（default）
+access: default
 
+# 3.x 必须用 resources
 resources:
   fc-function:
-    component: fc3  # 声明是 FC 组件
+    component: fc3  # 3.x 用 fc3 组件
     props:
-      region: cn-shenzhen
-      accountId: 1754669208046130
-      # region: ${env.ALIYUN_REGION}  # 地域
-      # accountId: ${env.ALIYUN_ACCOUNT_ID}  # 主账号 ID（子账号必配）
-      service:
-        name: my-fc-service  # FC 服务名
-      function:
-        name: my-fc-function  # FC 函数名
-        runtime: nodejs20
-        codeUri: ./  # 代码目录
-        handler: index.handler  # 入口函数
+      region: cn-shenzhen  # 深圳地域
+      accountId: 1754669208046130  # 替换成实际主账号数字ID
+      # ========== FC3 核心变更1：服务配置 ==========
+      serviceName: my-fc-service  # 替代旧版的 service.name
+      # ========== FC3 核心变更2：函数配置（必填字段） ==========
+      functionName: my-fc-function  # 替代旧版的 function.name（必填）
+      runtime: nodejs20  # 必填（按你的代码改：python3.10/java17等）
+      handler: index.handler  # 必填（代码入口）
+      codeUri: ./  # 代码目录
+      timeout: 30  # 可选，函数超时时间
+      memorySize: 128  # 可选，内存大小
+      # ========== FC3 核心变更3：触发器配置（必填字段） ==========
       triggers:
-        - name: http-trigger
-          type: http
-          config:
+        - triggerName: http-trigger  # 替代旧版的 name（必填）
+          triggerType: http  # 替代旧版的 type（必填）
+          triggerConfig:  # 替代旧版的 config（必填，层级不能错）
             authType: anonymous
-            methods: [GET, POST]
+            methods: ["GET", "POST"]
