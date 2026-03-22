@@ -58,4 +58,7 @@ jobs:
       
       # 步骤8：部署到 FC
       - name: Deploy to Aliyun FC
+        env:
+          ALIYUN_ACCOUNT_ID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+          ALIYUN_REGION: ${{ secrets.ALIYUN_REGION }}
         run: s deploy -y --debug
