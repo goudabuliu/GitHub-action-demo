@@ -6,8 +6,10 @@ services:
   fc-function:
     component: fc  # 声明是 FC 组件
     props:
-      region: ${env.ALIYUN_REGION}  # 地域
-      accountId: ${env.ALIYUN_ACCOUNT_ID}  # 主账号 ID（子账号必配）
+      region: cn-shenzhen
+      accountId: 1754669208046130
+      # region: ${env.ALIYUN_REGION}  # 地域
+      # accountId: ${env.ALIYUN_ACCOUNT_ID}  # 主账号 ID（子账号必配）
       service:
         name: my-fc-service  # FC 服务名
       function:
