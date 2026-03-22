@@ -24,7 +24,7 @@ jobs:
         run: |
           # 用淘宝源加速全局安装，避免超时
           npm config set registry https://registry.npmmirror.com/
-          npm install -g @serverless-devs/s  # 指定稳定版本
+          npm install -g @serverless-devs/s@3.1.10
 
       # 步骤4：配置阿里云密钥（适配子账号）
       - name: Configure Serverless Devs
@@ -35,8 +35,6 @@ jobs:
           s config add \
             --AccessKeyID ${{ secrets.ACCESSKEYID }} \
             --AccessKeySecret ${{ secrets.ACCESSKEYSECRET }} \
-            --AccountID $ACCOUNT_ID \
-            --Region $REGION \
             -a default -f
 
       # 步骤5：部署到 FC
