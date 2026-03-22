@@ -43,4 +43,4 @@ jobs:
         env:
           ALIYUN_ACCOUNT_ID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
           ALIYUN_REGION: ${{ secrets.ALIYUN_REGION }}
-        run: s deploy -y --use-local --debug
+        run: s deploy -y --debug
