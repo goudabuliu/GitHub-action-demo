@@ -15,7 +15,7 @@ jobs:
       # 步骤2：仅安装 Node.js（只为了装 s 工具，关闭 npm 缓存）
       - uses: actions/setup-node@v4
         with:
-          node-version: 20  # LTS 版本
+          node-version: 24  # LTS 版本
           registry-url: https://registry.npmjs.org/
           # 删掉 cache: 'npm' —— 你不需要 npm 缓存
 
@@ -24,7 +24,7 @@ jobs:
         run: |
           # 用淘宝源加速全局安装，避免超时
           npm config set registry https://registry.npmmirror.com/
-          npm install -g @serverless-devs/s@3.2.0  # 指定稳定版本
+          npm install -g @serverless-devs/s  # 指定稳定版本
 
       # 步骤4：配置阿里云密钥（适配子账号）
       - name: Configure Serverless Devs
