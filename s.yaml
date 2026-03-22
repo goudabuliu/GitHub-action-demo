@@ -1,27 +1,29 @@
 edition: 3.0.0
-name: fc-app
+name: fc-fastapi-demo
 access: default
 
-# 3.x 必须用 resources
 resources:
-  fc-function:
-    component: fc3  # 3.x 用 fc3 组件
+  fc-fastapi:
+    component: fc3
     props:
-      region: cn-shenzhen  # 深圳地域
-      accountId: 1754669208046130  # 替换成实际主账号数字ID
-      # ========== FC3 核心变更1：服务配置 ==========
-      serviceName: my-fc-service  # 替代旧版的 service.name
-      # ========== FC3 核心变更2：函数配置（必填字段） ==========
-      functionName: my-fc-function  # 替代旧版的 function.name（必填）
-      runtime: nodejs20  # 必填（按你的代码改：python3.10/java17等）
-      handler: index.handler  # 必填（代码入口）
-      codeUri: ./  # 代码目录
-      timeout: 30  # 可选，函数超时时间
-      memorySize: 128  # 可选，内存大小
-      # ========== FC3 核心变更3：触发器配置（必填字段） ==========
+      # 基础配置（必填：替换主账号 ID）
+      region: cn-shenzhen
+      accountId: 1754669208046130  # 改成你的阿里云主账号数字 ID
+      
+      # 服务/函数配置（FastAPI 适配）
+      serviceName: fc-fastapi-service
+      functionName: fc-fastapi-function
+      runtime: python3.10  # FastAPI 推荐用 python3.10
+      handler: app.handler  # 入口：app.py 的 handler 函数
+      codeUri: ./           # 代码目录（仓库根目录）
+      codeType: zip         # FC3 必配
+      timeout: 30           # 超时时间
+      memorySize: 256       # 内存（FastAPI 建议 256M）
+      
+      # HTTP 触发器（匿名访问）
       triggers:
-        - triggerName: http-trigger  # 替代旧版的 name（必填）
-          triggerType: http  # 替代旧版的 type（必填）
-          triggerConfig:  # 替代旧版的 config（必填，层级不能错）
+        - triggerName: http-trigger
+          triggerType: http
+          triggerConfig:
             authType: anonymous
             methods: ["GET", "POST"]
