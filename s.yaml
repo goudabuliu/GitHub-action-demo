@@ -8,7 +8,7 @@ resources:
     props:
       # 基础配置（必填：替换主账号 ID）
       region: cn-shenzhen
-      accountId: ${{ secrets.ALIYUN_ACCOUNT_ID }}
+      accountId: 1754669208046130  # 改成你的阿里云主账号数字 ID
       
       # 服务/函数配置（FastAPI 适配）
       serviceName: fc-fastapi-service
