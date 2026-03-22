@@ -15,9 +15,7 @@ resources:
       functionName: fc-fastapi-function
       runtime: python3.10  # FastAPI 推荐用 python3.10
       handler: app.handler  # 入口：app.py 的 handler 函数
-      code:
-        src: ./            # 代码目录（仓库根目录）
-        type: string          # FC3 必配
+      code: ./           # 代码目录（仓库根目录）
       installDependency: true  # 自动安装 requirements.txt 依赖（关键！）
       
       timeout: 30           # 超时时间
