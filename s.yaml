@@ -23,7 +23,3 @@ services:
           config:
             authType: anonymous
             methods: [GET, POST]
-      # 可选：输出触发器地址（用于部署验证）
-      outputs:
-        - name: fc_url
-          value: ${fc-function.triggers[0].url}
