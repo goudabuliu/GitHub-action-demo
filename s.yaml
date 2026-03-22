@@ -4,7 +4,7 @@ access: default  # 对应 Actions 中配置的密钥别名（default）
 
 resources:
   fc-function:
-    component: fc  # 声明是 FC 组件
+    component: fc3  # 声明是 FC 组件
     props:
       region: cn-shenzhen
       accountId: 1754669208046130
