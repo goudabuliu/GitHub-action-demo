@@ -7,9 +7,9 @@ resources:
     component: fc3
     props:
       # 基础配置（必填：替换主账号 ID）
-      region: ${ALIYUN_REGION}  # 从环境变量读取区域（适配子账号）
-      accountId: ${ALIYUN_ACCOUNT_ID}  # 从环境变量读取主账号 ID（适配子账号）
-
+      region: cn-shenzhen
+      accountId: 1754669208046130  # 改成你的阿里云主账号数字 ID
+      
       # 服务/函数配置（FastAPI 适配）
       serviceName: fc-fastapi-service
       functionName: fc-fastapi-function
