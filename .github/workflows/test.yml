@@ -33,8 +33,8 @@ jobs:
           REGION: ${{ secrets.ALIYUN_REGION }}
         run: |
           s config add \
-            --AccessKeyID ${{ secrets.AccessKeyID }} \
-            --AccessKeySecret ${{ secrets.AccessKeySecret }} \
+            --AccessKeyID ${{ secrets.ACCESSKEYID }} \
+            --AccessKeySecret ${{ secrets.ACCESSKEYSECRET }} \
             --AccountID $ACCOUNT_ID \
             --Region $REGION \
             -a default -f
