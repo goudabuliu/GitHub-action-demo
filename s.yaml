@@ -2,7 +2,7 @@ edition: 3.0.0
 name: fc-app
 access: default  # 对应 Actions 中配置的密钥别名（default）
 
-services:
+resources:
   fc-function:
     component: fc  # 声明是 FC 组件
     props:
