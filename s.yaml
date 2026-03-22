@@ -17,7 +17,7 @@ resources:
       handler: app.handler  # 入口：app.py 的 handler 函数
       code:
         src: ./            # 代码目录（仓库根目录）
-        type: zip          # FC3 必配
+        type: string          # FC3 必配
       installDependency: true  # 自动安装 requirements.txt 依赖（关键！）
       
       timeout: 30           # 超时时间
