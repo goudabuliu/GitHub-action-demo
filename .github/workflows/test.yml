@@ -58,7 +58,11 @@ jobs:
       
       # 步骤8：部署到 FC
       - name: Deploy to Aliyun FC
-        env:
-          ALIYUN_ACCOUNT_ID: ${{ secrets.ALIYUN_ACCOUNT_ID }}
-          ALIYUN_REGION: ${{ secrets.ALIYUN_REGION }}
-        run: s deploy -y --debug
+        run: |
+          # 显式导出环境变量，确保 Serverless Devs 能读取到
+          export ALIYUN_ACCOUNT_ID=${{ secrets.ALIYUN_ACCOUNT_ID }}
+          export ALIYUN_REGION=${{ secrets.ALIYUN_REGION }}
+          # 打印环境变量（调试用，可选）
+          echo "ALIYUN_ACCOUNT_ID: $ALIYUN_ACCOUNT_ID"
+          echo "ALIYUN_REGION: $ALIYUN_REGION" 
+          s deploy -y --debug
